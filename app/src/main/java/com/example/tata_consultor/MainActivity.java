@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         iniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (ip.getText().equals("") || suc.getText().equals("")) {
+                if (ip.getText().equals(" ") || suc.getText().equals(" ")) {
                     return;
                 }
 
