@@ -19,6 +19,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        //EDITADO 20/07/2021
+
         iniciar = findViewById(R.id.btniniciar);
 
         ip = findViewById(R.id.edit_ip);
