@@ -8,6 +8,15 @@
     android:background="@drawable/backgroudefecto"
     tools:context=".ConsultorPrecioActivity">
 
+    <Button
+        android:id="@+id/btn_config"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:background="?attr/listChoiceBackgroundIndicator"
+        android:text="Config"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/edit_codigo_barra_manual"
         android:layout_width="300dp"

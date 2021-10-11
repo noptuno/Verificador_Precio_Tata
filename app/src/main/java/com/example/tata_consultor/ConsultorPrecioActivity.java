@@ -2,6 +2,8 @@ package com.example.tata_consultor;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -16,11 +18,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.tata_consultor.Clases.Producto;
+import com.example.tata_consultor.Constantes.Constante;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.util.Objects;
@@ -39,7 +43,7 @@ public class ConsultorPrecioActivity extends AppCompatActivity {
 
     private static final int AUTO_HIDE_DELAY_MILLIS = 3000;
     private static final int UI_ANIMATION_DELAY = 300;
-
+    SharedPreferences pref;
     private int tipocodigo = 2;
     private boolean boleananimationview = true;
     private boolean boleananimationbusqeudaview = false;
@@ -52,6 +56,7 @@ public class ConsultorPrecioActivity extends AppCompatActivity {
     private Request RequestPicking;
     private ProgressDialog dialog;
     private EditText editcodigobarramanual;
+    private Button btnconfig;
 
     private TextView txtdescripcion1, txtdescripcion2, txtprecioproducto, txtcodigoproducto, txtcodigobarraproducto;
 
@@ -62,6 +67,10 @@ public class ConsultorPrecioActivity extends AppCompatActivity {
     LottieAnimationView animationview;
     LottieAnimationView animationbusquedaview;
     boolean visible = false;
+
+    private static final int REQUEST_PICK_CONFIGURACION = 2;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +86,62 @@ public class ConsultorPrecioActivity extends AppCompatActivity {
         Button btnon = findViewById(R.id.btn_on);
         Button btnoff = findViewById(R.id.btn_off);
         editcodigobarramanual = findViewById(R.id.edit_codigo_barra_manual);
+
+        btnconfig = findViewById(R.id.btn_config);
+
+        btnconfig.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(ConsultorPrecioActivity.this);
+                View mView = getLayoutInflater().inflate(R.layout.alerdiaglog, null);
+                final EditText mEmail = (EditText) mView.findViewById(R.id.etEmail);
+                final EditText mPassword = (EditText) mView.findViewById(R.id.etPassword);
+                final TextView text = (TextView) mView.findViewById(R.id.txt_sucursal);
+                Button mLogin = (Button) mView.findViewById(R.id.btnLogin);
+
+                mBuilder.setView(mView);
+                final AlertDialog dialog = mBuilder.create();
+                dialog.show();
+
+                mLogin.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (!mPassword.getText().toString().isEmpty()) {
+
+                            pref = getSharedPreferences(Constante.LOGINNAME, Context.MODE_PRIVATE);
+
+                            String PASSWORD = pref.getString(Constante.PASSWORD, Constante.PASSWORDROOT);
+
+                            if (mPassword.getText().toString().equals(PASSWORD) || mPassword.getText().toString().equals(Constante.PASSWORDROOT) ){
+
+
+                                Intent intent2 = new Intent(ConsultorPrecioActivity.this, MainActivity.class);
+
+                                startActivityForResult(intent2, REQUEST_PICK_CONFIGURACION);
+                                dialog.dismiss();
+
+                            }else{
+
+                                Toast.makeText(ConsultorPrecioActivity.this,"Acceso Denegado", Toast.LENGTH_SHORT).show();
+
+                            }
+
+                        } else {
+
+                            mPassword.setError("Faltan Datos");
+                            mPassword.requestFocus();
+
+                        }
+                    }
+                });
+
+
+
+
+            }
+        });
 
 
         Button test = findViewById(R.id.btntest);
@@ -225,14 +290,14 @@ public class ConsultorPrecioActivity extends AppCompatActivity {
                         .addHeader("Content-Type", "application/json")
                         .build();
 
-                EnableDialog(true, "cargando");
+                EnableDialog(true, "Cargando");
 
                 Pickinghttp.newCall(RequestPicking).enqueue(new Callback() {
 
                     @Override
                     public void onFailure(Call call, IOException e) {
                         e.printStackTrace();
-                        EnableDialog(false, "limpiando");
+                        EnableDialog(false, "Limpiando");
                         DisplayPrintingStatusMessage("Conexion Fallo");
                     }
 
@@ -254,15 +319,15 @@ public class ConsultorPrecioActivity extends AppCompatActivity {
                                     DisplayPrintingStatusMessage("Producto NO registrado");
                                 }
 
-                                EnableDialog(false, "mostrando");
+                                EnableDialog(false, "Mostrando");
 
                             } catch (IOException e) {
                                 e.printStackTrace();
-                                EnableDialog(false, "limpiando");
+                                EnableDialog(false, "Limpiando");
                             }
                         } else {
                             DisplayPrintingStatusMessage("Error con la conexion Wifi.. Reintentar");
-                            EnableDialog(false, "limpiando");
+                            EnableDialog(false, "Limpiando");
 
                         }
                     }
@@ -439,10 +504,13 @@ public class ConsultorPrecioActivity extends AppCompatActivity {
             sucursal = (parametros.getString("suc"));
             m_ip = (parametros.getString("ip"));
 
-        } else {
-            sucursal = (parametros.getString("suc"));
-            m_ip = (parametros.getString("ip"));
-            Toast.makeText(getApplicationContext(), "No hay datos a mostrar", Toast.LENGTH_LONG).show();
+        } else{
+
+            pref = getSharedPreferences("USUARIO", Context.MODE_PRIVATE);
+            String ipp = pref.getString("IP", "200.40.253.210");
+            String succ = pref.getString("SUC", "2");
+
+
         }
     }
 

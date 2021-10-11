@@ -64,12 +64,23 @@
         android:id="@+id/btniniciar"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
         android:background="@drawable/btn_fondo_color2"
         android:text="INICIAR"
         android:textColor="@color/colorAccent"
-        app:layout_constraintBottom_toBottomOf="@+id/edit_sucursal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/edit_ip" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="162dp" />
+
+    <Button
+        android:id="@+id/btn_Cerrar"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/btn_fondo_color3"
+        android:text="Cerrar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btniniciar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

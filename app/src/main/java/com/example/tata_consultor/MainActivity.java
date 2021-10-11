@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
-    Button iniciar;
+    Button iniciar,cerrar;
     EditText ip,suc;
     SharedPreferences pref;
     @Override
@@ -19,11 +19,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         //EDITADO 20/07/2021
 
         iniciar = findViewById(R.id.btniniciar);
+        cerrar = findViewById(R.id.btn_Cerrar);
 
+        cerrar. setOnClickListener(new View.OnClickListener() {
+        @Override
+         public void onClick(View view) {
+         finish();
+         }
+});
         ip = findViewById(R.id.edit_ip);
         suc = findViewById(R.id.edit_sucursal);
 
@@ -33,9 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
         ip.setText(ipp);
         suc.setText(succ);
-
+/*
         Intent intent2 = new Intent(MainActivity.this, ConsultorPrecioActivity.class);
-
         intent2.putExtra("ip", ip.getText().toString());
         intent2.putExtra("suc", suc.getText().toString());
 
@@ -44,10 +49,9 @@ public class MainActivity extends AppCompatActivity {
         editor.putString("IP", ip.getText().toString());
         editor.putString("SUC", suc.getText().toString());
         editor.apply();
-
         startActivity(intent2);
 
-
+*/
 
         iniciar.setOnClickListener(new View.OnClickListener() {
             @Override
