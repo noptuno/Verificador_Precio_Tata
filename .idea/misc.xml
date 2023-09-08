@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/david/AndroidStudioProjects/TATA/app/src/main/res/drawable/backgroudefecto.xml" value="0.3338541666666667" />
+        <entry key="..\:/Users/david/AndroidStudioProjects/TATA/app/src/main/res/drawable/btn_fondo_color2.xml" value="0.3328125" />
+        <entry key="..\:/Users/david/AndroidStudioProjects/TATA/app/src/main/res/drawable/btn_fondo_color3.xml" value="0.3328125" />
+        <entry key="..\:/Users/david/AndroidStudioProjects/TATA/app/src/main/res/drawable/ic_fondosanroquesvg.xml" value="0.3338541666666667" />
+        <entry key="..\:/Users/david/AndroidStudioProjects/TATA/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.3338541666666667" />
+        <entry key="..\:/Users/david/AndroidStudioProjects/TATA/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3338541666666667" />
+        <entry key="..\:/Users/david/AndroidStudioProjects/TATA/app/src/main/res/drawable/ic_tag_60x30.xml" value="0.3328125" />
+        <entry key="..\:/Users/david/AndroidStudioProjects/TATA/app/src/main/res/drawable/ic_tag_60x30_amarillo.xml" value="0.3338541666666667" />
+        <entry key="..\:/Users/david/AndroidStudioProjects/TATA/app/src/main/res/drawable/ic_tag_60x30_consultor_impreso.xml" value="0.3338541666666667" />
+        <entry key="..\:/Users/david/AndroidStudioProjects/TATA/app/src/main/res/drawable/ic_tag_60x30_impreso.xml" value="0.3338541666666667" />
+        <entry key="..\:/Users/david/AndroidStudioProjects/TATA/app/src/main/res/layout/activity_main.xml" value="0.21" />
+        <entry key="..\:/Users/david/AndroidStudioProjects/TATA/app/src/main/res/layout/activity_test.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/david/AndroidStudioProjects/TATA/app/src/main/res/layout/alerdiaglog.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/david/AndroidStudioProjects/TATA/app/src/main/res/layout/consultor_precio.xml" value="0.16" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
